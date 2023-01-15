@@ -4,11 +4,11 @@ import _ from 'lodash'
 const TreeRecursive=({data})=>{
     return data.map((item)=>{
         if (item.type === "file") {
-            return <File name={item.name}/>;
+            return <File name={item.name} id={item.id} key={item.id}/>;
           }
           if (item.type === "folder") {
             return (
-              <Folder name={item.name} id={item.id}>
+              <Folder name={item.name} id={item.id} key={item.id}>
                 <TreeRecursive data={item.childrens} />
               </Folder>
             );

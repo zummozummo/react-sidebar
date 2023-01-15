@@ -1,18 +1,15 @@
 import { Fragment } from "react";
-
+import createFile from "../../actions/createFile";
+import {useDispatch} from 'react-redux'
+import deleteFolder from "../../actions/deleteFolder";
 const FolderName = ({ name,id,isOpen,handleClick }) => {
 
-
-  function deleteFolder(id){
-    console.log(id)
-  }
-
+  const dispatch=useDispatch();
     return (
       <Fragment>
           <div onClick={handleClick}>{name}</div>
-          <span onClick={()=>deleteFolder(id)}>delete</span>
-          <span>rename</span>
-          <span>add</span>
+          <span onClick={()=>dispatch(createFile("xxxxxxxxxx-filename",id))}>addFile---</span>
+          <span onClick={()=>dispatch(deleteFolder(id))}>deleteFolder</span>
       </Fragment>
     );
   };

@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 
-const File = ({ name }) => {
+const File = ({ name ,id}) => {
     return (
         <div>{name}</div>
     );
