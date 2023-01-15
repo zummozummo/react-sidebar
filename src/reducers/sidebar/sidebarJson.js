@@ -32,10 +32,9 @@ const sidebarReducer=(state=sidebar,action)=>{
             return {...updatedSidebar }
         case "DELETE_FOLDER":
             console.log("delete reducer")
-            let tempSidebar=_.cloneDeep(state)
-            let targetFolderId=action.payload.targetFolderId
-            let fileObject={ type: action.payload.type, name: action.payload.name,id: uuidv4() }
-            let updatedSidebar=addFileOrFolderToSidebar(tempSidebar,targetFolderId,fileObject)
+            tempSidebar=_.cloneDeep(state)
+            targetFolderId=action.payload.targetFolderId
+            updatedSidebar=removeFolder(tempSidebar,targetFolderId)
             return {...updatedSidebar }
         default:
             return state
@@ -53,6 +52,16 @@ function addFileOrFolderToSidebar(initialState,targetFolderId,fileObject){
     }
   }
   return initialState;
+}
+function removeFolder(initialState,targetFolderId){
+  for(let i=0;i<initialState.length;i++){
+    if(initialState[i].id==targetFolderId && initialState[i].type==="folder" ){
+     initialState[i].childrens.push(fileObject)
+   }else if (initialState[i].type==="folder" ){
+     addFileOrFolderToSidebar(initialState[i].childrens,targetFolderId,fileObject)
+   }
+ }
+ return initialState;
 }
 
 
