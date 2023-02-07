@@ -1,0 +1,51 @@
+.sidebarRow {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.sidebarRow:hover .actions > svg {
+    opacity: 1;
+    pointer-events: all;
+    transition: 0.2s;
+  }
+
+.sidebar {
+    width: max-content;
+    padding: 10px;
+    font-family: "PT Sans";
+    color: #353535;
+    line-height: 1;
+}
+
+.actions {
+    margin-left: 100px;
+}
+div.actions > svg {
+    opacity: 0;
+    margin-left: 10px;
+}
+
+.name {
+    background-color: white;
+    cursor: pointer;
+}
+
+.sidebarRow:hover {
+    background-color: rgb(222, 207, 207);
+}
+
+/* during the click duration */
+.sidebarRow:active {
+    background-color: yellow;
+}
+
+.sidebarRow:checked {
+    background-color: red;
+}
+/* 
+div.sidebarRow:hover .actions {
+    opacity: 1;
+    pointer-events: all;
+    transition: 0.2s;
+  } */

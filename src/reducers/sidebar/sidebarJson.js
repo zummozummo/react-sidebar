@@ -10,6 +10,7 @@ import _ from 'lodash'
           type: "folder",
           name: "Components",
           id: uuidv4(),
+          selected: true,
           childrens: [
             { type: "file", name: "Modal.js" ,id: uuidv4()},
             { type: "file", name: "Modal.css",id: uuidv4(), }
