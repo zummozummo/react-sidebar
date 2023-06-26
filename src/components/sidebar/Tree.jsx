@@ -2,8 +2,7 @@ import TreeRecursive from "../TreeRecursive/TreeRecursive";
 import '../sidebar/Tree.style.css';
 
 function Tree({ data, children }) {
-  console.log(data)
-  console.log(children)
+   console.log(data)
     return (
       <div className="sidebar">
         <TreeRecursive data={data}/>

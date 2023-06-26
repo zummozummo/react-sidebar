@@ -3,21 +3,23 @@ import {
   AiOutlineDelete,
   AiOutlineEdit,
 } from "react-icons/ai";
-
-const File = ({ name }) => {
-
+import { removeFile } from "../../store";
+import { useDispatch } from "react-redux";
+const File = ({ name, id }) => {
+  const dispatch = useDispatch()
   const toggleEditing = () => {
   }
-  const commitDelete = (name) => {
+  const commitDelete = (id) => {
+    console.log("----",id)
   };
   return (
-    <div className="sidebarRow">
-      <div classname="name">
+    <div className="sidebarRow" id={id}>
+      <div className= "name">
         <AiOutlineFile />&nbsp;&nbsp;{name}
       </div>
       <div className="actions">
         <AiOutlineEdit onClick={toggleEditing} />
-        <AiOutlineDelete onClick={commitDelete} />
+        <AiOutlineDelete onClick={()=> commitDelete(id)} />
       </div>
     </div>
   );

@@ -1,7 +1,4 @@
 import { Fragment } from "react";
-import createFile from "../../actions/createFile";
-import {useDispatch} from 'react-redux'
-import deleteFolder from "../../actions/deleteFolder";
 import {
   AiOutlineFolderAdd,
   AiOutlineFileAdd,
@@ -10,37 +7,39 @@ import {
   AiOutlineDelete,
   AiOutlineEdit,
 } from "react-icons/ai";
-const FolderName = ({ name,id,isOpen,handleClick }) => {
+import { addFile, addFolder,removeFolder } from "../../store";
+import { useDispatch } from "react-redux";
+import { v4 as uuidv4 } from 'uuid';
 
-  const dispatch=useDispatch();
-  const handleFileCreation = () => {
-    dispatch(createFile("xxxxxxxxxx-filename",id))
+const FolderName = ({ name,id,isOpen,handleClick }) => {
+  const dispatch = useDispatch()
+  const handleFileCreation = (id) => {
+    console.log(id)
+    dispatch(addFile({id: id}))
   }
   
-  const handleFolderCreation = () => {
-    // dispatch(deleteFolder(id))
+  const handleFolderCreation = (id) => {
+    dispatch(addFolder({id: id}))
   }
 
   const handleFolderRename = () => {
     // setIsOpen(true);
     // setEditing(true);
   };
-  const commitDeleteFolder = () => {
-    dispatch(deleteFolder(id))
-
-    // dispatch({ type: FOLDER.DELETE, payload: { id } });
+  const commitDeleteFolder = (id) => {
+    dispatch(removeFolder({id:id}));
   };
 
     return (
       <Fragment>
-          <div classname="name" onClick={handleClick}>{isOpen ? <AiOutlineFolderOpen /> : <AiOutlineFolder />}&nbsp;&nbsp;{name}</div>
+          <div className="name" onClick={handleClick}>{isOpen ? <AiOutlineFolderOpen /> : <AiOutlineFolder />}&nbsp;&nbsp;{name}</div>
           <div
         className="actions"
       >
         <AiOutlineEdit onClick={handleFolderRename} />
-        <AiOutlineFileAdd onClick={handleFileCreation} />
-        <AiOutlineFolderAdd onClick={handleFolderCreation}/>
-        <AiOutlineDelete onClick={commitDeleteFolder} />
+        <AiOutlineFileAdd onClick={()=>handleFileCreation(id)} />
+        <AiOutlineFolderAdd onClick={()=>handleFolderCreation(id)}/>
+        <AiOutlineDelete onClick={() =>commitDeleteFolder(id)} />
       </div>
       </Fragment>
     );
