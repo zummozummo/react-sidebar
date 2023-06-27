@@ -1,11 +1,11 @@
 import TreeRecursive from "../TreeRecursive/TreeRecursive";
+import '../sidebar/Tree.style.css';
+
 function Tree({ data, children }) {
-  console.log(data)
-  console.log(children)
-  const isImparative = data && !children;
+   console.log(data)
     return (
-      <div>
-        { isImparative?<TreeRecursive data={data}/>:children}
+      <div className="sidebar">
+        <TreeRecursive data={data}/>
       </div>
     )
   }

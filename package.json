@@ -6,13 +6,15 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "dev:nodemon": "nodemon --watch src --ext js,jsx --exec \"npm run dev\""
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^3.9.0",
     "react-redux": "^8.0.5",
     "uuid": "^9.0.0"
   },
