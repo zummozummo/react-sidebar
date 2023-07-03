@@ -1,0 +1,10 @@
+.contentEditable{
+    height: 500px;
+    margin: 0 auto;
+    width: 600px;
+    padding: 0 8px;
+}
+
+.editor-heading-h1{
+    background-color: aqua;
+}

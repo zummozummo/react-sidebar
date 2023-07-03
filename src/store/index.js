@@ -44,14 +44,27 @@ const sidebarSlice =  createSlice({
     }
 })
 
+const selectedNodeSlice  = createSlice({
+  name : "currentSelectedNode",
+  initialState : {},
+  reducers:{
+    addCurrentNode(state, action){
+      console.log(action.payload.id)
+      state.currentSelectedNode= action.payload.id
+    }
+  }
+})
+
 const store = configureStore({
     reducer : {
-        sidebar : sidebarSlice.reducer
+        sidebar : sidebarSlice.reducer,
+        currentSelectedNode: selectedNodeSlice.reducer,
     }
 })
 
 export { store }
 export const { addFile, addFolder, removeFolder,removeFile } = sidebarSlice.actions
+export const { addCurrentNode } =selectedNodeSlice.actions
 
 function addFileObjectToChildrens(arr, targetId) {
     const fileObject = { type: "file", name: "untitled" ,id: uuidv4()}
